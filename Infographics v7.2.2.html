@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pakistan's Political Ad Wars - Carousel Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            color: #374151; /* gray-700 */
+        }
+        .slide {
+            min-height: 100vh;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            position: relative;
+            border-bottom: 1px solid #e5e7eb; /* gray-200 */
+        }
+        .watermark {
+            position: absolute;
+            bottom: 1rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            color: rgba(0, 0, 0, 0.15);
+            font-weight: 600;
+            letter-spacing: 0.05em;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: #ffffff;
+            border-radius: 0.75rem;
+            padding: 1.5rem;
+            border: 1px solid #e5e7eb; /* gray-200 */
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+        }
+        .gradient-text {
+            background-image: linear-gradient(to right, #c026d3, #be185d, #dc2626);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        .gradient-text-reversed {
+            background-image: linear-gradient(to right, #dc2626, #be185d 95%, #c026d3);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+
+    <!-- 
+    Color Palette Selection:
+    - Name: Light Theme with Red-Purple Gradient Text
+    - Background: bg-gray-50
+    - Text: text-gray-700
+    - Gradient Accent: from-purple-600 via-pink-600 to-red-600
+    - Chart Colors: Shades of red, purple, pink, and orange
+    -->
+
+    <main>
+        <!-- Slide 1: Title -->
+        <section id="slide1" class="slide bg-white">
+            <div class="text-center">
+                <h1 class="text-5xl md:text-7xl font-black text-gray-800 uppercase tracking-wider">Pakistan's</h1>
+                <h2 class="text-6xl md:text-8xl font-black uppercase tracking-wider gradient-text">Political Ad Wars</h2>
+                <p class="mt-4 text-base md:text-lg text-gray-600 max-w-2xl mx-auto">A data-driven analysis of the battle for influence.</p>
+            </div>
+            <div class="watermark gradient-text">Infographic by Junaid I. Siddiqui</div>
+        </section>
+
+        <!-- Slide 2: The Hook (KPIs) -->
+        <section id="slide2" class="slide bg-gray-50">
+            <div class="w-full max-w-4xl pb-8 text-center">
+                <h3 class="text-3xl mb-8 text-gray-800">
+                    <span class="text-4xl uppercase font-black">THE HIGH STAKES:</span><br>
+                    <span class="text-2xl font-semibold"><span class="gradient-text">-</span> Two Numbers Tell the Story <span class="gradient-text">-</span></span>
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 text-center shadow-lg">
+                        <h4 class="text-2xl font-bold text-gray-500 uppercase tracking-wider">Total Ad Market</h4>
+                        <p class="text-6xl md:text-7xl font-black gradient-text">PKR 114.6B</p>
+                        <p class="text-base text-gray-600 mt-2">in FY 2023-24, a <span class="font-bold text-green-600">14.45% increase</span> from the previous year.</p>
+                        <p class="text-[10px] text-gray-400 italic mt-1">Source: Aurora Magazine</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-xl border border-gray-200 text-center shadow-lg">
+                        <h4 class="text-2xl font-bold text-gray-500 uppercase tracking-wider">PDM Govt. Blitz</h4>
+                        <p class="text-6xl md:text-7xl font-black gradient-text">PKR 9.6B</p>
+                        <p class="text-base text-gray-600 mt-2">spent on government advertising in just 16 months (2022-23).</p>
+                        <p class="text-[10px] text-gray-400 italic mt-1">Source: Report to the Senate of Pakistan</p>
+                    </div>
+                </div>
+            </div>
+            <div class="watermark">Infographic by Junaid I. Siddiqui</div>
+        </section>
+
+        <!-- Slide 3: The State's Purse -->
+        <section id="slide3" class="slide bg-gray-50">
+            <div class="chart-container w-full max-w-4xl">
+                <h3 class="text-2xl font-bold mb-1 text-center gradient-text">The State's Purse as a Weapon</h3>
+                <p class="text-base text-gray-600 mb-4 text-center max-w-2xl mx-auto">Annualized government ad spending skyrockets during periods of political contention, revealing its use as a strategic tool for narrative control.</p>
+                <div class="h-80 md:h-96">
+                    <canvas id="govtSpendChart"></canvas>
+                </div>
+                <div class="mt-1">
+                    <p class="text-[10px] text-gray-500 italic text-center">Source: Compiled from reports to the Senate & National Assembly</p>
+                    <p class="text-center text-[10px] text-gray-300 font-semibold tracking-wider">Infographic by Junaid I. Siddiqui</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Slide 4: The Digital Battlefield -->
+        <section id="slide4" class="slide bg-gray-50">
+             <div class="chart-container w-full max-w-4xl">
+                <h3 class="text-2xl font-bold mb-1 text-center gradient-text">The Asymmetric Digital Battlefield</h3>
+                <p class="text-base text-gray-600 mb-4 text-center max-w-2xl mx-auto">Parties with access to state funds spent little of their own money online. The opposition, facing a media blackout, was forced to invest heavily in digital outreach.</p>
+                <div class="h-80 md:h-96">
+                    <canvas id="partySpendChart"></canvas>
+                </div>
+                <div class="pl-20 md:pl-28 mt-1">
+                    <p class="text-[10px] text-gray-500 italic text-center">Source: Digital Rights Foundation, "Platforms At The Polls"</p>
+                    <p class="text-center text-[10px] text-gray-300 font-semibold tracking-wider">Infographic by Junaid I. Siddiqui</p>
+                </div>
+             </div>
+        </section>
+
+        <!-- Slide 5: The Regulatory Void -->
+        <section id="slide5" class="slide bg-gray-50">
+            <div class="w-full max-w-6xl text-center">
+                <h3 class="text-3xl font-bold mb-2 gradient-text">The Regulatory Void</h3>
+                <p class="text-base text-gray-600 mb-12 max-w-3xl mx-auto">The system meant to ensure fair play is broken. A combination of outdated laws and an under-resourced regulator creates a system ripe for abuse.</p>
+                
+                <!-- Diagram for Desktop -->
+                <div class="hidden md:flex items-center justify-center w-full gap-1">
+                    <!-- Start Box -->
+                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-lg text-center w-48 h-48 flex flex-col justify-center shrink-0">
+                        <p class="font-bold text-lg gradient-text">The Problem</p>
+                        <p class="text-sm text-gray-600 mt-1">Elections Act, 2017</p>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </div>
+                    <!-- Causes -->
+                    <div class="flex flex-col gap-4 w-52 shrink-0">
+                        <div class="bg-red-50 p-3 rounded-xl border-2 border-dashed border-red-300 text-left h-22">
+                            <h4 class="font-bold text-red-800 text-center">Cause 1: <br>Spending Cap Loophole</h4>
+                            <p class="text-xs text-red-700 mt-1">Individual spending is capped, but party spending isn’t — creating a loophole.</p>
+                        </div>
+                        <div class="bg-red-50 p-3 rounded-xl border-2 border-dashed border-red-300 h-22">
+                             <h4 class="font-bold text-red-800 text-center">Cause 2: <br>Digital Blind Spot</h4>
+                             <p class="text-xs text-red-700 mt-1">Social media ads, fundraising, and data targeting remain unregulated — the modern battleground.</p>
+                        </div>
+                    </div>
+                    <!-- Arrow -->
+                    <div class="text-gray-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
+                    </div>
+                    <!-- Consequence -->
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-lg text-center w-48 h-48 flex flex-col justify-center shrink-0">
+                        <p class="text-lg font-black uppercase gradient-text-reversed">Consequence</p>
+                        <p class="mt-2 font-semibold text-gray-700">A System Open to Abuse</p>
+                    </div>
+                </div>
+
+                <!-- Diagram for Mobile -->
+                <div class="md:hidden flex flex-col items-center gap-4">
+                    <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-lg text-center w-full max-w-xs h-36 flex flex-col justify-center">
+                        <p class="font-bold text-lg gradient-text">The Problem</p>
+                        <p class="text-sm text-gray-600 mt-1">Elections Act, 2017</p>
+                    </div>
+                    <div class="text-gray-300 text-3xl">↓</div>
+                    <div class="bg-red-50 p-4 rounded-xl border-2 border-dashed border-red-300 w-full max-w-xs text-left">
+                        <h4 class="font-bold text-red-800 text-center">Cause 1: <br>Spending Cap Loophole</h4>
+                        <p class="text-sm text-red-700 mt-1">Individual spending is capped, but party spending isn’t — creating a loophole.</p>
+                    </div>
+                     <div class="bg-red-50 p-4 rounded-xl border-2 border-dashed border-red-300 w-full max-w-xs">
+                         <h4 class="font-bold text-red-800 text-center">Cause 2: <br>Digital Blind Spot</h4>
+                         <p class="text-sm text-red-700 mt-1">Social media ads, fundraising, and data targeting remain unregulated — the modern battleground.</p>
+                    </div>
+                    <div class="text-gray-300 text-3xl">↓</div>
+                    <div class="bg-white p-6 rounded-xl border border-gray-200 shadow-lg text-center w-full max-w-xs h-36 flex flex-col justify-center">
+                        <p class="text-lg font-black uppercase gradient-text-reversed">Consequence</p>
+                        <p class="mt-2 font-semibold text-gray-700">A System Open to Abuse</p>
+                    </div>
+                </div>
+
+                <p class="text-[10px] text-gray-500 italic text-center mt-12">Source: Analysis based on the Elections Act, 2017 & FES reports</p>
+            </div>
+            <div class="watermark">Infographic by Junaid I. Siddiqui</div>
+        </section>
+        
+        <!-- Slide 6: Conclusion -->
+        <section id="slide6" class="slide bg-white">
+             <div class="text-center max-w-3xl">
+                <h3 class="text-3xl font-bold gradient-text mb-2">Conclusion</h3>
+                <h4 class="text-2xl font-semibold text-gray-800 mb-4">A System Under Strain</h4>
+                <p class="text-base text-gray-600 mb-6">
+                    The data reveals a critical duality: the strategic use of state funds to control traditional media narratives, and an unregulated, privately-funded arms race on digital platforms. This entire system operates within a regulatory vacuum, where obsolete laws and under-resourced institutions fail to ensure a level playing field, posing a significant challenge to the integrity of Pakistan's democratic processes.
+                </p>
+                <a href="#slide1" class="font-semibold text-lg gradient-text hover:opacity-80">Back to Top ↑</a>
+            </div>
+            <div class="watermark">Infographic by Junaid I. Siddiqui</div>
+        </section>
+
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const wrapLabel = (label, maxLength = 16) => {
+                if (label.length <= maxLength) {
+                    return label;
+                }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                for (const word of words) {
+                    if ((currentLine + ' ' + word).length > maxLength) {
+                        lines.push(currentLine.trim());
+                        currentLine = word;
+                    } else {
+                        currentLine += ' ' + word;
+                    }
+                }
+                lines.push(currentLine.trim());
+                return lines.map(l => l.trim()).filter(l => l);
+            };
+
+            const tooltipTitleCallback = {
+                plugins: {
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                return Array.isArray(label) ? label.join(' ') : label;
+                            }
+                        }
+                    }
+                }
+            };
+
+            const createDiagonalPattern = (color = 'black') => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                const size = 10;
+                canvas.width = size;
+                canvas.height = size;
+                ctx.strokeStyle = color;
+                ctx.lineWidth = 2;
+                ctx.beginPath();
+                ctx.moveTo(0, size);
+                ctx.lineTo(size, 0);
+                ctx.stroke();
+                return ctx.createPattern(canvas, 'repeat');
+            };
+
+            const generateChartStyling = (data, primaryColor, patternColor, defaultColor, borderColor) => {
+                const sortedData = [...data].sort((a, b) => b - a);
+                const highest = sortedData[0];
+                const secondHighest = sortedData[1];
+                const pattern = createDiagonalPattern(patternColor);
+
+                const backgroundColors = data.map(value => {
+                    if (value === highest) return primaryColor;
+                    if (value === secondHighest) return pattern;
+                    return defaultColor;
+                });
+
+                const borderColors = data.map(value => {
+                    if (value === highest) return primaryColor;
+                    if (value === secondHighest) return borderColor;
+                    return defaultColor;
+                });
+
+                return { backgroundColors, borderColors };
+            };
+            
+            Chart.defaults.color = '#4b5563'; // gray-600
+            Chart.defaults.borderColor = '#e5e7eb'; // gray-200
+            Chart.defaults.font.family = "'Inter', sans-serif";
+
+            const govtSpendCtx = document.getElementById('govtSpendChart').getContext('2d');
+            const govtData = [4.4, 1.4, 7.2];
+            const govtStyling = generateChartStyling(govtData, '#fca5a5', '#fca5a5', '#e5e7eb', '#f87171');
+            new Chart(govtSpendCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['PML-N (2013-2018)', 'PTI (2018-2022)', 'PDM (2022-2023)'],
+                    datasets: [{
+                        label: 'Average Annualized Ad Spend (PKR bn)',
+                        data: govtData,
+                        backgroundColor: govtStyling.backgroundColors,
+                        borderColor: govtStyling.borderColors,
+                        borderWidth: 1.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    ...tooltipTitleCallback,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Average Annualized Spend (PKR Billions)' }
+                        }
+                    },
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+
+            const partySpendCtx = document.getElementById('partySpendChart').getContext('2d');
+            const partyData = [25, 13, 6, 5, 0.79];
+            const partyStyling = generateChartStyling(partyData, '#fca5a5', '#fca5a5', '#e5e7eb', '#f87171');
+            new Chart(partySpendCtx, {
+                type: 'bar',
+                data: {
+                    labels: [
+                        wrapLabel('Pakistan Tehreek-e-Insaf (PTI)'),
+                        wrapLabel('Istehkam-e-Pakistan Party (IPP)'),
+                        wrapLabel('Jamaat-e-Islami (JI)'),
+                        wrapLabel('Pakistan People\'s Party (PPP)'),
+                        wrapLabel('Pakistan Muslim League-N (PML-N)')
+                    ],
+                    datasets: [{
+                        label: 'Ad Spend on Meta (PKR Millions)',
+                        data: partyData,
+                        backgroundColor: partyStyling.backgroundColors,
+                        borderColor: partyStyling.borderColors,
+                        borderWidth: 1.5
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    indexAxis: 'y',
+                    ...tooltipTitleCallback,
+                    scales: {
+                        x: {
+                            beginAtZero: true,
+                            title: { display: true, text: 'Spend in Millions (PKR)' },
+                            max: 30
+                        },
+                        y: {
+                           ticks: {
+                                display: true
+                            },
+                             grid: {
+                                display: true
+                            }
+                        }
+                    },
+                    plugins: {
+                        ...tooltipTitleCallback.plugins,
+                        legend: { display: false }
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
